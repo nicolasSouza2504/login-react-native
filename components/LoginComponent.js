@@ -6,8 +6,8 @@ export default function Login() {
     
     const[password, setPassword] = useState('');
     const[name, setName] = useState('');
-    const[msgReturn, setMsgReturn] = useState('');
-    const[validations, setValidations] = useState('');
+    const[msg, setMsg] = useState('');
+    const[msgReturned, setMsgReturned] = useState('');
     
     const login =  () => {
     
@@ -26,17 +26,15 @@ export default function Login() {
         .then((response) => {
             
             if (response.status < 400) {
-                setMsgReturn("User permission acecepted")
+                setMsg("User permission acecepted:")
             } else {
-                setMsgReturn("User permission denied")
+                setMsg("User permission denied:")
             }
 
             return response.json()
         })
         .then((json) =>{
-            if (msgReturn.includes("denied")) {
-                setValidations(JSON.stringify(json));
-            }
+            setMsgReturned(JSON.stringify(json));
         })
     };
 
@@ -65,10 +63,15 @@ export default function Login() {
                 <TouchableOpacity style={Style.button} onPress={() => login()}>
                     <Text style={Style.textButton}>Login</Text>
                 </TouchableOpacity>
-                <View style={msgReturn.includes("denied") ? Style.errorResult : Style.successResult}>
-                    <Text style={Style.textButton}>{msgReturn}:</Text>
-                    <Text style={Style.textButton}>{validations}</Text>
-                </View>
+                {
+                    msg !== "" ? (                
+                        <View  style={msg.includes("denied") ? Style.errorResult : Style.successResult}>
+                            <Text style={Style.textButton}>{msg}</Text>
+                            <Text style={Style.textButton}>{msgReturned}</Text>
+                        </View>) 
+                        : <></>
+                }
+
             </View>
         </View>
     )
