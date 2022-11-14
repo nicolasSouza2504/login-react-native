@@ -1,0 +1,3 @@
+
+(java:67324): Gtk-WARNING **: 20:28:29.700: cache version is different 1 != 2
+2022-11-13 20:28:41,491 [  14400]   WARN - #com.intellij.ui.jcef.JBCefApp - JCEF runtime library is not a JBR module (Use JBR bundled with the IDE) 
