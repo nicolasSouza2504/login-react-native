@@ -69,6 +69,11 @@ const style = StyleSheet.create({
         borderRadius: 5,
         alignItems: "center",
         backgroundColor: "#7dff81"
+    },
+    errorMessage: {
+        fontWeight: 'bold',
+        color: 'black',
+
     }
 
 });

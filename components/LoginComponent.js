@@ -7,7 +7,7 @@ export default function Login() {
     const[password, setPassword] = useState('');
     const[name, setName] = useState('');
     const[msg, setMsg] = useState('');
-    const[msgReturned, setMsgReturned] = useState('');
+    const[errorsView, setErrorsView] = useState('');
     
     const login =  () => {
     
@@ -26,7 +26,7 @@ export default function Login() {
         .then((response) => {
             
             if (response.status < 400) {
-                setMsg("User permission acecepted:")
+                setMsg("User permission acecepted!")
             } else {
                 setMsg("User permission denied:")
             }
@@ -34,9 +34,36 @@ export default function Login() {
             return response.json()
         })
         .then((json) =>{
-            setMsgReturned(JSON.stringify(json));
+            
+            if (json && json.message) {
+
+                setErrorsView(getErrorsView(json.message));
+                
+            }
+
         })
     };
+
+    function getErrorsView(errorMessage) {
+        const errors = errorMessage.split("*");
+
+        if (errors) {
+
+            const errorsText = [];
+
+
+            errors.forEach(error => {
+                errorsText.push(<Text style={Style.errorMessage}>{error}</Text>);
+            }) 
+            
+            return  <View>
+                       {errorsText}
+                    </View>
+            
+        }
+
+        return <></>
+    }
 
     return (
         <View style={Style.general}>
@@ -67,7 +94,7 @@ export default function Login() {
                     msg !== "" ? (                
                         <View  style={msg.includes("denied") ? Style.errorResult : Style.successResult}>
                             <Text style={Style.textButton}>{msg}</Text>
-                            <Text style={Style.textButton}>{msgReturned}</Text>
+                            {errorsView && msg.includes("denied") ? errorsView : null}
                         </View>) 
                         : <></>
                 }
