@@ -20,7 +20,7 @@ const style = StyleSheet.create({
     },
     formContext: {
         width: "100%",
-        height: "100%",
+        height: "60%",
         bottom: 0,
         backgroundColor: "#ebe8e8",
         alignItems: "center",
@@ -29,6 +29,18 @@ const style = StyleSheet.create({
         borderTopRightRadius: 30,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30           
+    },
+    gridContext: {
+        width: "100%",
+        height: "75%",
+        backgroundColor: "#ebe8e8",
+        alignItems: "center",
+        marginTop: 50,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30, 
+        marginBottom: 20       
     },
     input: {
         borderRadius: 50,
@@ -46,16 +58,17 @@ const style = StyleSheet.create({
     button: {
         alignItems: "center",
         width: "45%",
-        height: "5%",
+        height: 50,
         borderRadius: 50,
         backgroundColor: 'white'
     },
     textButton: {
         fontWeight: 'bold',
         color: 'black',
-        paddingTop: 7
+        padding: 7
     },
     general: {
+        height: "100%",
         backgroundColor: '#2e2d2d'
     },
     errorResult: {
@@ -76,8 +89,34 @@ const style = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
 
-    }
+    },
+    registerNewUserButton: {
+        alignSelf: 'flex-end',
+        backgroundColor: "#7dff81",
+        borderRadius: 8,
+        paddingBottom: 5,
+        paddingLeft: 10,
+        paddingRight: 5,
+        width: 150,
+        margin: 20
+    },
+    buttonBar: {
+        position: 'absolute',
+        height: 80,
+        bottom: 0,
+        width: "100%"
+    },
+    editUserButton: {
+        position: 'absolute',
+        alignSelf: 'flex-start',
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 8,
+        paddingBottom: 5,
+        paddingLeft: 10,
+        paddingRight: 5
 
+    }
 });
 
 export default style;

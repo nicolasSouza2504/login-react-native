@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView} from "react-native";
 import { DataTable } from 'react-native-paper'; 
 import Style from "../style/style"
 import { StyleSheet } from "react-native";
@@ -69,14 +69,25 @@ export default () => {
  
     return  <View style={Style.general}>
                 <Text style={Style.title}>Registered Users</Text>
-                    <View style={Style.formContext}>
-                        <DataTable>
-                            <DataTable.Header style={Style.label}>
-                                <DataTable.Title>Name</DataTable.Title>
-                                <DataTable.Title>Creation Date</DataTable.Title>
-                            </DataTable.Header>
+                <View style={Style.gridContext}>
+                    <DataTable style={{height: "100%"}}>
+                        <DataTable.Header>
+                            <DataTable.Title>Name</DataTable.Title>
+                            <DataTable.Title>Creation Date</DataTable.Title>
+                        </DataTable.Header>
+                        <ScrollView>
                             {rows}
-                        </DataTable>
+                        </ScrollView>
+                    </DataTable>
+                </View>
+                <View style={Style.buttonBar}>
+                        <TouchableOpacity style={Style.registerNewUserButton} onPress={() => login()}>
+                            <Text style={Style.textButton}>Register new user</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={Style.editUserButton} onPress={() => login()}>
+                            <Text style={Style.textButton}>Edit User</Text>
+                        </TouchableOpacity>
                     </View>
             </View>
+            
 }
