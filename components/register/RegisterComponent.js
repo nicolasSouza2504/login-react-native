@@ -7,6 +7,7 @@ import { StyleSheet } from "react-native";
 export default () => {
     
     const [rows, setRows] = useState([]);
+    const [pressed, setPressed] = useState([]);
 
     const users = fetch('http://10.0.2.2:8080/user', {
         method: 'GET',
@@ -26,6 +27,25 @@ export default () => {
 
     })
 
+    function handleClick(userId) {
+        const pressedArray = [];
+
+        pressedArray.push(userId);
+        
+        setPressed(pressedArray);
+
+    }
+
+    function isPressed(userId) {
+
+        if (pressed.includes(userId)) {
+            return true;
+        } else { 
+            return false;
+        }
+
+    }
+
     function setUserRows(data) {
         
         if (data && data.length) {
@@ -35,7 +55,7 @@ export default () => {
             data.forEach(user => {
                 users.push
                         (    
-                                <DataTable.Row>
+                                <DataTable.Row style={{backgroundColor: isPressed(user.id) ? '#a39e9e' : null}} onPress={ () => handleClick(user.id)}>
                                     <DataTable.Cell>{user.name}</DataTable.Cell>
                                     <DataTable.Cell>{user.creationDate}</DataTable.Cell>
                                 </DataTable.Row>

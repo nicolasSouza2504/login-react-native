@@ -15,7 +15,7 @@ export default (props) =>  {
         user.password = password;
         user.name = name;
         
-        fetch('http://10.0.2.2:8080/user/login', {
+        fetch('http://10.0.2.2:8080/user', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
