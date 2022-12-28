@@ -26,7 +26,9 @@ const style = StyleSheet.create({
         alignItems: "center",
         marginTop: 50,
         borderTopLeftRadius: 30,
-        borderTopRightRadius: 30        
+        borderTopRightRadius: 30,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30           
     },
     input: {
         borderRadius: 50,

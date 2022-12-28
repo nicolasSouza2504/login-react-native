@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import { Text, TextInput, View, TouchableOpacity} from "react-native"
-import Style from "./style/style"
+import Style from "../style/style"
 
-export default function Login() {
+export default (props) =>  {
     
     const[password, setPassword] = useState('');
     const[name, setName] = useState('');
@@ -15,7 +15,7 @@ export default function Login() {
         user.password = password;
         user.name = name;
         
-        fetch('http://10.0.2.2:8080/user', {
+        fetch('http://10.0.2.2:8080/user/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -24,9 +24,9 @@ export default function Login() {
             body: JSON.stringify(user)
         })
         .then((response) => {
-            
             if (response.status < 400) {
                 setMsg("User permission acecepted!")
+                props.page('register');
             } else {
                 setMsg("User permission denied:")
             }
@@ -67,7 +67,7 @@ export default function Login() {
 
     return (
         <View style={Style.general}>
-            <Text style={Style.title}>Login Example</Text>
+            <Text style={Style.title}>Login</Text>
             <View style={Style.formContext}>
                 <View style={Style.form}>
                     <Text style={Style.label}>Name</Text>
