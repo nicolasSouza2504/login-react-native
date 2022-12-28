@@ -87,7 +87,7 @@ export default () => {
                         <TouchableOpacity style={Style.editUserButton} onPress={() => login()}>
                             <Text style={Style.textButton}>Edit User</Text>
                         </TouchableOpacity>
-                    </View>
+                </View>
             </View>
             
 }

@@ -5,7 +5,7 @@ import RegisterComponent from "./components/register/RegisterComponent"
 
 export default () => {
 
-    const [page, setPage] = useState("register");
+    const [page, setPage] = useState("login");
 
     return  <View>
                 {
