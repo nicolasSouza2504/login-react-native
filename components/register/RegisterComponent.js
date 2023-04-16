@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, ScrollView} from "react-native";
 import { DataTable } from 'react-native-paper'; 
 import Style from "../style/style"
@@ -9,23 +9,25 @@ export default () => {
     const [rows, setRows] = useState([]);
     const [pressed, setPressed] = useState([]);
 
-    const users = fetch('http://10.0.2.2:8080/user', {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          }
-    })
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) =>{
-        
-        if (json) {
-            setUserRows(json);
-        }
-
-    })
+    useEffect(() => {
+        fetch('http://10.0.2.2:8080/user', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+              }
+        })
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) =>{
+            
+            if (json) {
+                setUserRows(json);
+            }
+    
+        })
+    });
 
     function handleClick(userId) {
         const pressedArray = [];
